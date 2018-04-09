@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "AT&T and the Interior Point Method!"
+title:  "Storing Sparse Matrices"
 date: 2018-04-09
 categories: Optimization
 ---
