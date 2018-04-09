@@ -2,6 +2,6 @@
 layout: post
 title:  "Storing Sparse Matrices"
 date: 2018-04-09
-categories: Sparse Matrices
+categories: SparseMatrices
 ---
 In this post, we will talk about sparse matrices and the data structures that can be used to store them.
