@@ -1,14 +1,16 @@
-# Jekyll-Pithy
+# jekyll-simple
 
-Jekyll-Pithy is a theme for Jekyll. Here is [my blog](http://wenva.github.io) which use this theme.
+## simple
+simple is a theme designed for blogger using static site generator like jekyll, Hexo etc.
 
-![image](https://raw.githubusercontent.com/smallmuou/Jekyll-Pithy/master/images/Jekyll-Pithy.png)
+Especially for those who writes in both Chinese and English. The font-type setting looks really good when writers use Chinese mixed with English.
 
-### Usage
-* Clone it.
-* cd Jekyll-Pithy, and Run "jekyll serve"(You must install [jekyll](http://jekyllrb.com/) first)
-* Open web browser and enter "http://127.0.0.1:4000/", you can see the web page like snapshot above.
-* If you want to host you blog on Github Page, you can follow the steps provide by Github.
+Supposedly, this could work with Japanese as well but never had a chance to try.
 
-### License
-The code follows MIT License.
+## Story behind this theme
+
+It has been long that using font with Chinese in web was a tedious and time-consuming work. It would be almost impossible to make different OS or devices to look the same.
+
+iOS 9 has pulished some new fonts in Chinese and I decided to make one theme that looks good on iOS devices, at the same time, making it acceptable on computers using other fonts.
+
+So mobile goes first, then the macOS.
