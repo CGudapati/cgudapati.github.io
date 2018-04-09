@@ -4,8 +4,11 @@ title: About
 permalink: /about/
 ---
 
-This is a simple Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/).  Plus, you can find a lot of themes at [jekyllthemes.org](http://jekyllthemes.org/)
+Hi, I’m Chaitanya! This blog mostly documents my various interests like Optimization, Numerical Methods and Sparse Matrix Algebra. I graduated with a Masters Degree in Industrial Engineering in 2017 from Lehigh Univeristy. I also have a bachelors degree from Indian Institute of Technology, Madras in Chemical Engineering. 
 
-You can find the source code for this theme at: <data data-icon="ei-sc-github"></data>  [jekyll-simple](https://github.com/wild-flame/jekyll-simple)
+Please feel to conatct me at gudapatichaitanya and the domain is outlook.com. 
 
-You can find the source code for Jekyll at <data data-icon="ei-sc-github"></data>  [jekyll](https://github.com/jekyll/jekyll)
+
+I am using the theme developed by [wild-flame](https://github.com/wild-flame). You can find the source code for this theme at: <data data-icon="ei-sc-github"></data>  [jekyll-simple](https://github.com/wild-flame/jekyll-simple)
+
+
