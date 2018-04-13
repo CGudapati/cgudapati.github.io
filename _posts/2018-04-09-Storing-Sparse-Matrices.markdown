@@ -6,7 +6,7 @@ categories: SparseMatrices
 use_math: true
 description: n this post, we will talk about sparse matrices and the data structures that can be used to store them. 
 ---
-In this post, we will talk about sparse matrices and the data structures that can be used to store them. We will mainly discuss the Triplet Fomr and the Compressed Column Storage form. 
+In this post, we will talk about sparse matrices and the data structures that can be used to store them. We will mainly discuss the Triplet Form and the Compressed Column Storage form. 
 
 Let us take an example of a simple sparse matrix with $m = 4$ rows  and $n = 5$ columns:
 
@@ -15,6 +15,9 @@ $$
 A =   \begin{bmatrix}2 & 0 & 1& 1 & 0\\0  & 1 & 0 & 2 &0\\0 &0 &1 &0 &3\\2 &0 &4  &0 &0 \end{bmatrix}
 $$
 
+We will be using 0-based indexing for coding and 1-based indexing whenever we are discussing linear algebraic notation. 
+
+The simplest way to represet sparse matrix is by using triplet form. We will simply list the row index column index and the value for each non-zero entry in the amtrix $A$
 
 
 
