@@ -4,7 +4,7 @@ title:  "Storing Sparse Matrices"
 date: 2018-04-09
 categories: SparseMatrices
 use_math: true
-description: n this post, we will talk about sparse matrices and the data structures that can be used to store them. 
+description: In this post, we will talk about sparse matrices and the data structures that can be used to store them. 
 ---
 In this post, we will talk about sparse matrices and the data structures that can be used to store them. We will mainly discuss the Triplet Form and the Compressed Column Storage form. 
 
@@ -31,6 +31,7 @@ The simplest way to represet sparse matrix is by using triplet form. We will sim
     1         3       2
     2         4       3
 </pre>
+It should be noted that  we need **not** have the elements in the triplet format to in sorted format. 
 
 
 
