@@ -18,7 +18,7 @@ url: "http://cgudapati.com" # the base hostname & protocol for your site
 #github_username:  wild-flame 
 
 # Build settings
-markdown: maruku
+markdown: kramdown
 kramdown:
   input: GFM
 
