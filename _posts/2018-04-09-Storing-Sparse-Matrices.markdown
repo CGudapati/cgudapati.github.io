@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Storing Sparse Matrices"
+title:  "Storing Sparse Matrices: C++"
 date: 2018-04-09
 categories: SparseMatrices
 use_math: true
@@ -35,7 +35,7 @@ It should be noted that  we need **not** have the elements in the triplet format
 
 ### Compressed Column Storage \(CCS\)
 
-A matrix stored in CCS format needs three vectors to represent it, namely two `<int>` vectors, `col_ptr` and `row_index` and one `<double>` vector, `vals`. The `vals` store all the non-zero values of matrix $A$ in a contiguous piece of memory. We can traverse the matrix $A$ column by column. The size of `vals` vector is `nnz(A)` (number of non-zeros in matrix $A$). The size of `row_index` vector is also `nnz(A)`. The `row-index` contains the row index of each non-zero element of $A$.
+A matrix stored in CCS format needs three vectors to represent it, namely two `<int>` vectors, `col_ptr` and `row_index` and one `<double>` vector, `vals`. The `vals` store all the non-zero values of matrix $A$ in a contiguous piece of memory. We can traverse the matrix $A$ column by column. The size of `vals` vector is `nnz(A)` \(number of non-zeros in matrix $A$\). The size of `row_index` vector is also `nnz(A)`. The `row-index` contains the row index of each non-zero element of $A$.
 
 Going column by column, we can write the `vals` vectors as follows
 
