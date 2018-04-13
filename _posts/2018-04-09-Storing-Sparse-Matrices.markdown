@@ -17,7 +17,22 @@ $$
 
 We will be using 0-based indexing for coding and 1-based indexing whenever we are discussing linear algebraic notation. 
 
-The simplest way to represet sparse matrix is by using triplet form. We will simply list the row index column index and the value for each non-zero entry in the amtrix $A$
+The simplest way to represet sparse matrix is by using triplet form. We will simply list the row index column index and the value for each non-zero entry in the matrix $A$
+
+<pre>
+<b>row_index col_index value </b>
+    0         0       2     
+    3         0       2
+    1         1       1
+    0         2       1
+    2         2       1
+    3         2       4
+    0         3       1
+    1         3       2
+    2         4       3
+</pre>
+
+
 
 
 
