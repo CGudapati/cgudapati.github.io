@@ -9,3 +9,26 @@ In this post, we will talk about sparse matrices and the data structures that ca
 
 Let us take an example of a simple sparse matrix with $m = 4$ rows  and $n = 5$ columns:
 $$A =   \begin{bmatrix}2 & 0 & 1& 1 & 0\\0  & 1 & 0 & 2 &0\\0 &0 &1 &0 &3\\2 &0 &4  &0 &0 \end{bmatrix} $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
