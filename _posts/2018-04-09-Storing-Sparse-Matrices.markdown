@@ -54,7 +54,6 @@ $$col\_ptr = [0, 2, 3, 6, 8, 9]$$
 The data structure to represent compressed column storage is given below.
 
 <pre>
-<code class="language-klipse-cpp">
 struct SSparseMat{
     int nzmax;  //maximum number of non-zeros entries
     int m;  //number of rows
@@ -64,7 +63,6 @@ struct SSparseMat{
     std::vector<double> vals;
     int nz;  // flag for triplet or CCS
 };
-</code>
 </pre>
 
 We can use the above struture to store both the triplet matrices and CCS matrices.
