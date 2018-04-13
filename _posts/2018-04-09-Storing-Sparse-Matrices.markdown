@@ -31,9 +31,9 @@ The simplest way to represent sparse matrix is by using triplet form. We will si
     1         3       2
     2         4       3
 </pre>
-It should be noted that  we need **not** have the elements in the triplet format to in sorted format. We clearly see that we need less space to represent the sparse matrix. But we can do better by using Compressed Column Storage (CCS). 
+It should be noted that  we need **not** have the elements in the triplet format to in sorted format. We clearly see that we need less space to represent the sparse matrix. But we can do better by using Compressed Column Storage \(CCS\). 
 
-###Compressed Column Storage (CCS)
+### Compressed Column Storage \(CCS\)
 
 A matrix stored in CCS format needs three vectors to represent it, namely two `<int>` vectors, `col_ptr` and `row_index` and one `<double>` vector, `vals`. The `vals` store all the non-zero values of matrix $A$ in a contiguous piece of memory. We can traverse the matrix $A$ column by column. The size of `vals` vector is `nnz(A)` (number of non-zeros in matrix $A$). The size of `row_index` vector is also `nnz(A)`. The `row-index` contains the row index of each non-zero element of $A$.
 
