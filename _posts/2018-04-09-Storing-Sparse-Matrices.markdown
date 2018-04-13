@@ -41,7 +41,7 @@ Going column by column, we can write the `vals` vectors as follows
 
 $$vals = [2,2,1,1,1,4,1,2,3] $$
 
-The corresponding row indexes of each of the above value in `vals` vector is (we are using 0 based index)
+The corresponding row indexes of each of the above value in `vals` vector is \(we are using 0 based index\)
 
 $$row\_index = [0,3,1,0,2,3,0,1,2] $$
 
