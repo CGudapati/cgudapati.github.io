@@ -64,9 +64,10 @@ struct SSparseMat{
     std::vector<double> vals;
     int nz;  // flag for triplet or CCS
 };
-</code></pre>
+</code>
+</pre>
 
-WE can use the above struture to store both the triplet matrices and CCS matrices.
+We can use the above struture to store both the triplet matrices and CCS matrices.
 
 
 
