@@ -69,6 +69,13 @@ We can use the above struture to store both the triplet matrices and CCS matrice
 
 
 
+Most of this discussion is based on my readings of the Excellent book by Tim Davis. I encourage eveyone to take a look at the book. 
+
+### References
+- - -
+1. Tim Davis, [_Direct Methods for Sparse Linear Systems_](Direct Methods for Sparse Linear Systems
+), 2006, SIAM 
+
 
 
 

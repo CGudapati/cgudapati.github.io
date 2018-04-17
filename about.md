@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Chaitanya! This blog mostly documents my various interests like Optimization, Numerical Methods and Sparse Matrix Algebra. I graduated with a Masters Degree in Industrial Engineering in 2017 from Lehigh Univeristy. I also have a bachelors degree from Indian Institute of Technology, Madras in Chemical Engineering. 
+Hi, I am Chaitanya! This blog mostly documents my various interests like Optimization, Numerical Methods and Sparse Matrix Algebra. I graduated with a Masters Degree in Industrial Engineering in 2017 from Lehigh Univeristy. I also have a Bachelors degree from Indian Institute of Technology, Madras in Chemical Engineering. 
 
-Please feel to conatct me at gudapatichaitanya and the domain is outlook.com. 
+Please feel to contact me at gudapatichaitanya and the domain is outlook.com. 
 
 
 I am using the theme developed by [wild-flame](https://github.com/wild-flame). You can find the source code for this theme at: <data data-icon="ei-sc-github"></data>  [jekyll-simple](https://github.com/wild-flame/jekyll-simple)
