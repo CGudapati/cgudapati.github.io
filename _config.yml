@@ -17,7 +17,9 @@ url: "http://cgudapati.com" # the base hostname & protocol for your site
 markdown: kramdown
 kramdown:
   input: GFM
-
+  
+plugins:
+  - jekyll-seo-tag
 # Third-party services
 # just leave someone empty to disable it
 # google_analytics: 
