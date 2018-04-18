@@ -68,6 +68,24 @@ struct SSparseMat{
 We can use the above struture to store both the triplet matrices and CCS matrices.
 
 
+We can also write a wrapper to allocate memory for a sparse matrix.
+
+~~~ c++
+SSparseMat SSM_Allocate( int m, int n, int nz, int nzmax)
+{
+    SSparseMat C;
+    C.m = m;
+    C.n = n;
+    C.nzmax = nzmax;
+    C.nz = -1;
+    C.col_ptr = std::vector<int>((n + 1));
+    C.row_index = std::vector<int>(nzmax);
+    C.A_value = std::vector<double >(nzmax);
+    return C;
+}
+~~~
+
+
 
 Most of this discussion is based on my readings of the Excellent book by Tim Davis. I encourage eveyone to take a look at the book. 
 
