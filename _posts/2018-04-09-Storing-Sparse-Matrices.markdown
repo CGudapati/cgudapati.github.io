@@ -86,11 +86,11 @@ A simple main function to use the above datastructure is below:
 #include "SSM_Includes.h"
 int main() {
 
-    SSparseMat<int, double> C(5,5,10,10);
+    SSparseMat<int, double> C(4,5,9,9);
 
-    std::vector<int>v1   {0,3,0,1,4,2,0,4,1,3};
-    std::vector<int>v2   {0,0,1,1,1,2,3,3,4,4};
-    std::vector<double>v3{1,1,3,1,2,5,2,3,2,4};
+    std::vector<int>v1   {0,3,1,0,2,3,0,1,2};
+    std::vector<int>v2   {0,0,1,2,2,2,3,3,4};
+    std::vector<double>v3{2,2,1,1,1,4,1,2,3};
 
     C.row_index =  v1;
     C.col_ptr = v2;
@@ -107,22 +107,3 @@ Most of this discussion is based on my readings of the Excellent book by Tim Dav
 - - -
 1. Tim Davis, [_Direct Methods for Sparse Linear Systems_](Direct Methods for Sparse Linear Systems
 ), 2006, SIAM 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
