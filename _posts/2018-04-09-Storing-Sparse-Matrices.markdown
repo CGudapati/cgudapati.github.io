@@ -54,38 +54,52 @@ $$col\_ptr = [0, 2, 3, 6, 8, 9]$$
 The data structure to represent compressed column storage is given below.
 
 ~~~ c++
+#include "SSM_Includes.h"
+template <typename T, typename S>
 struct SSparseMat{
-    int nzmax;  //maximum number of non-zeros entries
-    int m;  //number of rows
-    int n;  //number of cols
-    std::vector<int> col_ptr;
-    std::vector<int> row_index;
-    std::vector<double> vals;
-    int nz;  // flag for triplet or CCS
+
+    T nzmax;  //maximum number of entries
+    T m;  //Number of rows
+    T n;  //number of columns
+    std::vector<T> row_index;
+    std::vector<T> col_ptr;
+    std::vector<S> values;
+    int nz;
+
+    SSparseMat() = default;
+    SSparseMat(T numRows, T numCols, T nzFlag, T nzmaxVal) :
+            m(numRows), n(numCols), nz(nzFlag), nzmax(nzmaxVal)
+    {
+     col_ptr = std::vector<T> ((numCols+1));
+     row_index = std::vector<T>(nzmaxVal);
+     values = std::vector<S>(nzmaxVal);
+    }
 };
 ~~~
 
 We can use the above struture to store both the triplet matrices and CCS matrices.
 
-
-We can also write a wrapper to allocate memory for a sparse matrix.
+A simple main function to use the above datastructure is below:
 
 ~~~ c++
-SSparseMat SSM_Allocate( int m, int n, int nz, int nzmax)
-{
-    SSparseMat C;
-    C.m = m;
-    C.n = n;
-    C.nzmax = nzmax;
-    C.nz = -1;
-    C.col_ptr = std::vector<int>((n + 1));
-    C.row_index = std::vector<int>(nzmax);
-    C.A_value = std::vector<double >(nzmax);
-    return C;
-}
+#include <iostream>
+#include "SSM_Includes.h"
+int main() {
+
+    SSparseMat<int, double> C(5,5,10,10);
+
+    std::vector<int>v1   {0,3,0,1,4,2,0,4,1,3};
+    std::vector<int>v2   {0,0,1,1,1,2,3,3,4,4};
+    std::vector<double>v3{1,1,3,1,2,5,2,3,2,4};
+
+    C.row_index =  v1;
+    C.col_ptr = v2;
+    C.values = v3;
+
+    printVector(v3);
 ~~~
 
-
+You can find the full source at [github](https://github.com/CGudapati/SimpleSparse)
 
 Most of this discussion is based on my readings of the Excellent book by Tim Davis. I encourage eveyone to take a look at the book. 
 
