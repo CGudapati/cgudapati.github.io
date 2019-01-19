@@ -10,7 +10,7 @@ LIBSVM files are used a lot in machine learning area to test various classificat
 
 Quite a few times, In real world cases,  SVM datasets are very sparse, i.e. most of the feautures for observations are blank. We we can store the SVM data in a sparse matrix. I personally am used to coding my algorithms using compressed row storage (CRS) but I do know that others prefer comressed column storage (CCS). So this library can be used to get the SVM data in both the formats. To learn more about compressed column storage and compressed row storage, one can visit [Compressed Row Storage](http://netlib.org/linalg/html_templates/node91.html) and [Compressed Column Storage](http://netlib.org/linalg/html_templates/node91.html).  A sample SVM format file looks like this:
 
-`+1 1:10 5:-2 
+`+1 1:10 5:-2
 +1 1:3 2:9 6:3
 +1 2:7 3:8 4:7
 -1 1:3 3:8 4:7 5:5
