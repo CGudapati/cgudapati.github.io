@@ -6,7 +6,7 @@ categories: SparseMatrices, SVM, LIBSVM, MachineLearning
 use_math: true
 description: In this post, we will take a look at a simple C++ library to read SVM files and store them in either compressed row storage or compressed column storage matrices. 
 ---
-LIBSVM files are used a lot in machine learning area to test various classification algorithms. The main repository for downloading variaus LIBSVM (SVM from here on) files is at [](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html)
+LIBSVM files are used a lot in machine learning area to test various classification algorithms. The main repository for downloading variaus LIBSVM (SVM from here on) files is at [NTU.edu.tw](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html) website
 
 Quite a few times, In real world cases,  SVM datasets are very sparse, i.e. most of the feautures for observations are blank. We we can store the SVM data in a sparse matrix. I personally am used to coding my algorithms using compressed row storage (CRS) but I do know that others prefer comressed column storage (CCS). So this library can be used to get the SVM data in both the formats. To learn more about compressed column storage and compressed row storage, one can visit [Compressed Row Storage](http://netlib.org/linalg/html_templates/node91.html) and [Compressed Column Storage](http://netlib.org/linalg/html_templates/node91.html).  A sample SVM format file looks like this:
 
