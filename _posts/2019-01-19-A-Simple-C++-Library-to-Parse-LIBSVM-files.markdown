@@ -10,12 +10,14 @@ LIBSVM files are used a lot in machine learning area to test various classificat
 
 Quite a few times, In real world cases,  SVM datasets are very sparse, i.e. most of the feautures for observations are blank. We we can store the SVM data in a sparse matrix. I personally am used to coding my algorithms using compressed row storage (CRS) but I do know that others prefer comressed column storage (CCS). So this library can be used to get the SVM data in both the formats. To learn more about compressed column storage and compressed row storage, one can visit [Compressed Row Storage](http://netlib.org/linalg/html_templates/node91.html) and [Compressed Column Storage](http://netlib.org/linalg/html_templates/node91.html).  A sample SVM format file looks like this:
 
-`+1 1:10 5:-2
+~~~
++1 1:10 5:-2
 +1 1:3 2:9 6:3
 +1 2:7 3:8 4:7
 -1 1:3 3:8 4:7 5:5
 -1 2:8 4:9 5:9 6:13
--1 2:4 5:2 6:-1`
+-1 2:4 5:2 6:-1
+~~~
 
 Each line in the file corresponds to an observation. and each observation starts with a label: either +1 or -1 (we only deal with binary classification in this post although ParseSVM can also parse multiple numberical labels). The subsequqent information describes the value of the feature and the feature position number. for instance, the first observation has a label of `+1` and the value of first(`1`) feature is 10,  fifth(`5`) feature is -2 and all the remaining feature values are 0.
 
