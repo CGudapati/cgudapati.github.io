@@ -29,6 +29,8 @@ L(x; a,y) = \log(1+\exp(-yx^{T}a)),
 $$
 
 where $x​$ is the set of variables (some folks might use the variable name $w​$) which we are trying to optimize, $y​$ is the label of an observation, and $a​$ is the feature vector of that particular observation.  Now when we have $m​$ samples, $(y_{i}, a_{i})__{i=1}^{m}​$, where $a_{i} \in R^{n}​$ and $y_i \in {(+1, -1)}​$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m​$. We will try to minimize this average loss. 
+
+
 $$
 \min_{x \in R^{n}} P(x) = \frac{1}{m}\sum_{i=1}^{m}L(x;a_i,y_i)).
 $$
@@ -42,6 +44,8 @@ This is an unconstrained optimization problem and there are numerous algorithms 
 $$
 \min f(x) \\ \text{s.t.}\quad  x \in \mathcal{F}
 $$
+
+
 where $\mathcal{F}​$ is a convex set of feasible solutions.  When $\mathcal{F}​$ is $\mathbb{R}^n​$, then we have an unconstrained optimization problem. 
 
 **Step 0:** Given $x^{0}$ is the first feasible solution.
@@ -210,6 +214,7 @@ The regularized objective function is
 $$
 \min_{x \in R^{n}} P(x) = \frac{1}{m}\sum_{i=1}^{m}\log(1+\exp(-y_{i}x^{T}a_{i})) + \frac{\lambda}{2}||x||^2
 $$
+
 We can see that we are summing $m$ terms and then dividing by and finally adding the regularization term. So we will do things in that order. In Line 11, we initialize `obj_val` to 0 as we accumulate the value of the objective function after considering each sample. Now for an $i^{th}$ sample, we need to calculate the $\log(1+\exp(-y_{i}x^{T}a_{i}))$ and we know that $x^{T}a_{i}$  or $a_{i}^{T}x$ is the $i^{th}$ coordinate of `ATx​` vector. Line 14 and 15 will get us the sum of all the log losses for each sample. Then we have to divide by $m$ which is achieved in Line 18 and then we add the value of the regularization in line 20. The objective function is finished. 
 
 Now let us move on to the gradient. 
@@ -254,15 +259,20 @@ Let us start by writing out the  expanded form of the $G(x)$. I left out the reg
 $$
 G(x) = \log(1+e^{-y_1x^{T}a_{1}}) + \log(1+e^{-y_2x^{T}a_{2}})+ ... + \log(1+e^{-y_mx^{T}a_{m}})
 $$
+
 Let us expand those terms now.
+
 $$
 G(x) = \log(1+e^{-y_{1}(a_{11}x_{1} + a_{12}x_{2} + ... + a_{1n}x_{n})})+ \log(1+e^{-y_{2}(a_{21}x_{1} + a_{22}x_{2} + ... + a_{2n}x_{n})}) + ... + \log(1+e^{-y_{m}(a_{m1}x_{1} + a_{m2}x_{2} + ... + a_{mn}x_{n})})
 $$
+
 To get the gradient, we have to take the partial derivative with respect to each and every coordinate of $x​$.
+
 $$
 \frac{\partial G}{\partial x_{1}} = \frac{1}{1+e^{-y_{1}x^{T}a_{1}}}.e^{-y_{1}x^{T}a_{1}}.-y_{1}a_{11} + \frac{1}{1+e^{-y_{2}x^{T}a_{2}}}.e^{-y_{2}x^{T}a_{2}}.-y_{2}a_{21} + ... + \frac{1}{1+e^{-y_{m}x^{T}a_{m}}}.e^{-y_{m}x^{T}a_{m}}.-y_{m}a_{m1}
 $$
 more compactly,
+
 $$
 \frac{\partial G}{\partial x_{1}} = \frac{e^{-y_{1}x^{T}a_{1}}}{1+e^{-y_{1}x^{T}a_{1}}}.-y_{1}a_{11} + \frac{e^{-y_{2}x^{T}a_{2}}}{1+e^{-y_{2}x^{T}a_{2}}}.-y_{2}a_{21}+ ... + \frac{e^{-y_{m}x^{T}a_{m}}}{1+e^{-y_{m}x^{T}a_{m}}}.-y_{m}a_{m1}
 $$
