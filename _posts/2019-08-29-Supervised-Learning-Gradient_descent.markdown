@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title:  "Implementing Gradient Descent in C++ for Supervised Learning on Data with Sparse Features"
 date: 2019-08-29
@@ -7,8 +6,8 @@ categories: SparseMatrices
 use_math: true
 description: In this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it.
 header-includes:
-- \usepackage{algorithm2e}
 ---
+
 It has been very long and in this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it. The focus is going to be more on the implementation side and less on the mathy side. So, at times I might do things in a handwavy manner but I will provide links on where you can get more (and better) information. I presume you have some rudimentary knowledge about Supervised Learning, Optimization and Gradient Descent. I will still go through them quickly for the sake of completeness.
 
 **Supervised Learning:** In simplest terms, supervised learning involves trying to find a mapping function, which can predict the output based on the input. We find the function based on a set of labeled data (input: a vector of features-output: some sort of label). For simplicity's sake, we assume we are only looking at two  output labels. Essentially, we are trying to predict on of the output from the given set of input features. We learn the mapping function by looking at the already labelled data called "Training Data". Then once the function has been found, we can vouch for its credibility by using the function to predict the output from the input on data  which has been not used in training  and is called "Testing Data".   The [Supervised Learning Wikipedia](https://en.wikipedia.org/wiki/Supervised_learning) page is pretty good for more information.
@@ -18,17 +17,20 @@ It has been very long and in this post, we shall learn how to implement Gradient
 **Optimization:** In the most simplistic terms, optimization involves finding the best value of a function over a given domain. Let us define a few terms. The first is **Loss Function**. The Loss function $L(f(x), y)$  tells us how much we "lose" by predicting the output $f(x)$ instead of the true output $y​$.  A lot has been spoken about [Empirical Risk Minimization](https://en.wikipedia.org/wiki/Empirical_risk_minimization) is the literature and I won't spend any time here. We use the Logistic Loss function to minimize the empirical risk.  
 
 Our data looks like this 
+
 $$
 y : A
 $$
+
 where $y$ is an $m$-dimensional vector of labels and $A$ is a collection of $m$ observations with each observation having $n$ features. Let $a_{kj}$ be the $k$th observation's $j$th feature. 
 
  The Logistic Loss is given by:
+
 $$
 L(x; a,y) = \log(1+\exp(-yx^{T}a)),
 $$
 
-where $x​$ is the set of variables (some folks might use the variable name $w​$) which we are trying to optimize, $y​$ is the label of an observation, and $a​$ is the feature vector of that particular observation.  Now when we have $m​$ samples, $(y_{i}, a_{i})__{i=1}^{m}​$, where $a_{i} \in R^{n}​$ and $y_i \in {(+1, -1)}​$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m​$. We will try to minimize this average loss. 
+where $x$ is the set of variables (some folks might use the variable name $w$) which we are trying to optimize, $y$ is the label of an observation, and $a$ is the feature vector of that particular observation.  Now when we have $m$ samples, $(y_{i}, a_{i}) | i = 1\dots m$, where $a_{i} \in R^{n}$ and $y_i \in {(+1, -1)}$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m$. We will try to minimize this average loss. 
 
 
 $$
@@ -37,10 +39,13 @@ $$
 
 
 We usually add a regularization term to prevent overfitting and more can be learnt at the wikipedia article on [Regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)). So the final optimization problem is:
+
 $$
 \min_{x \in R^{n}} P(x) = \frac{1}{m}\sum_{i=1}^{m}L(x;a_i,y_i)) + \frac{\lambda}{2}||x||^2
 $$
+
 This is an unconstrained optimization problem and there are numerous algorithms to solve it. A simple one is Gradient Decent. Before we go into the details of Gradient Descent, let us talk about the general framework of an optimization algorithm. Consider the following  general optimization problem. 
+
 $$
 \min f(x) \\ \text{s.t.}\quad  x \in \mathcal{F}
 $$
@@ -64,7 +69,7 @@ Let us try to use the above framework for **Gradient Descent**.
 
 **Step 0:** Let us choose $x^{0} = \mathbf{0}​$ (an all 0 vector)  as the first guess
 
-**Step 1:** For the directional derivative, $\delta f(x^{k}, s^{k})$ to be strictly less than 0, we can choose $s^{k} = -\nabla f(x^{k})$. For first iteration, it would be $s^{0} = -\nabla f(x^{0})$ and    $\delta f(x^{k}, s^{k}) = \nabla f(x^{0})^{T}(-\nabla f(x^{0})) = -||\nabla f(x^{0})||^{2} < 0$ 
+**Step 1:** For the directional derivative, $\delta f(x^{k}, s^{k})$ to be strictly less than 0, we can choose $s^{k} = -\nabla f(x^{k})$. For first iteration, it would be $ s^{0} = -\nabla f(x^{0})$ and    $\delta f(x^{k}, s^{k}) = \nabla f(x^{0})^{T}(-\nabla f(x^{0})) = -||\nabla f(x^{0})||^{2} < 0$ 
 
 **Step 2:** Now we know that if we go in the direction of negative gradient, we can reduce the value of the objective function. But how much should be advance? Too little, we might not get to the optimal solution fast enough. Too much, we might overplay our hands and miss the optimum. So, we need to find the best possible step length, which as you have guessed it sets up another optimization problem and it is called Line Search. Though this is just a 1-dimensional optimization problem, depending on the method we choose to optimize we might have to do a lot extra calculations like say objective function evaluations.  Can we get the convergence for free? The answer is **Yes**, but under some specific conditions -- namely the gradient of $P(x)$ is Lipschitz continuous. [Mark Schmidt](https://www.cs.ubc.ca/~schmidtm/Courses/540-W18/L4.pdf) at UBC explains it much better than I can do. And luckily, P(x)'s gradient is Lipschitz continuous. So what does this mean for the gradient descent? It means that we have a guarantee for convergence when the step size is constant $\alpha_{k} = \frac{1}{L}$ where $L$ is the Lipschitz's constant (largest Eigen value of the Hessian of $P'(x)$ for all values of $x​$  also, not very important for the implementation). Now, we are getting the exact amount to move for a guaranteed decrease in objective function value. 
 
@@ -256,6 +261,7 @@ Now let us move on to the gradient.
 We need to do a sparse gradient update.  Though it could be trivial for most folks, the below process helped me a few years ago when I was implementing the sparse gradient update. 
 
 Let us start by writing out the  expanded form of the $G(x)$. I left out the regularization term for now.
+
 $$
 G(x) = \log(1+e^{-y_1x^{T}a_{1}}) + \log(1+e^{-y_2x^{T}a_{2}})+ ... + \log(1+e^{-y_mx^{T}a_{m}})
 $$
@@ -271,12 +277,13 @@ To get the gradient, we have to take the partial derivative with respect to each
 $$
 \frac{\partial G}{\partial x_{1}} = \frac{1}{1+e^{-y_{1}x^{T}a_{1}}}.e^{-y_{1}x^{T}a_{1}}.-y_{1}a_{11} + \frac{1}{1+e^{-y_{2}x^{T}a_{2}}}.e^{-y_{2}x^{T}a_{2}}.-y_{2}a_{21} + ... + \frac{1}{1+e^{-y_{m}x^{T}a_{m}}}.e^{-y_{m}x^{T}a_{m}}.-y_{m}a_{m1}
 $$
+
 more compactly,
 
 $$
 \frac{\partial G}{\partial x_{1}} = \frac{e^{-y_{1}x^{T}a_{1}}}{1+e^{-y_{1}x^{T}a_{1}}}.-y_{1}a_{11} + \frac{e^{-y_{2}x^{T}a_{2}}}{1+e^{-y_{2}x^{T}a_{2}}}.-y_{2}a_{21}+ ... + \frac{e^{-y_{m}x^{T}a_{m}}}{1+e^{-y_{m}x^{T}a_{m}}}.-y_{m}a_{m1}
 $$
-​	
+we have,
 $$
 \begin{bmatrix}
 \frac{\partial G}{\partial x_{1}}\\ \frac{\partial G}{\partial x_{2}}\\.\\.\\.\\ \frac{\partial G}{\partial x_{n}}
