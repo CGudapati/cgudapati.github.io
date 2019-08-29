@@ -28,10 +28,12 @@ $$
 L(x; a,y) = \log(1+\exp(-yx^{T}a)),
 $$
 
-where $x$ is the set of variables (some folks might use the variable name $w$) which we are trying to optimize, $y$ is the label of an observation, and $a$ is the feature vector of that particular observation.  Now when we have $m$ samples, $(y_{i}, a_{i})_{i=1}^{m}$, where $a_{i} \in R^{n}$ and $y_i \in {(+1, -1)}$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m​$. We will try to minimize this average loss. 
+where $x​$ is the set of variables (some folks might use the variable name $w​$) which we are trying to optimize, $y​$ is the label of an observation, and $a​$ is the feature vector of that particular observation.  Now when we have $m​$ samples, $(y_{i}, a_{i})__{i=1}^{m}​$, where $a_{i} \in R^{n}​$ and $y_i \in {(+1, -1)}​$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m​$. We will try to minimize this average loss. 
 $$
 \min_{x \in R^{n}} P(x) = \frac{1}{m}\sum_{i=1}^{m}L(x;a_i,y_i)).
 $$
+
+
 We usually add a regularization term to prevent overfitting and more can be learnt at the wikipedia article on [Regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)). So the final optimization problem is:
 $$
 \min_{x \in R^{n}} P(x) = \frac{1}{m}\sum_{i=1}^{m}L(x;a_i,y_i)) + \frac{\lambda}{2}||x||^2
