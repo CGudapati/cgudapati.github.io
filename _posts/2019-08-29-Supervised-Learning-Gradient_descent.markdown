@@ -1,7 +1,7 @@
 ---
 
 layout: post
-title:  "Implementing Gradient Descent in C++ for Binary Classification on Data with Sparse Features in C++"
+title:  "Implementing Gradient Descent in C++ for Binary Classification on Data with Sparse Features"
 date: 2019-08-29
 categories: SparseMatrices
 use_math: true
