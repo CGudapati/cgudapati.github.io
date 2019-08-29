@@ -30,7 +30,7 @@ $$
 L(x; a,y) = \log(1+\exp(-yx^{T}a)),
 $$
 
-where $x$ is the set of variables (some folks might use the variable name $w$) which we are trying to optimize, $y$ is the label of an observation, and $a$ is the feature vector of that particular observation.  Now when we have $m$ samples, $ (y_{i}: a_{i}) | i = 1\dots m $, where $a_{i} \in R^{n}$ and $y_i \in {(+1, -1)}$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m$. We will try to minimize this average loss. 
+where $x$ is the set of variables (some folks might use the variable name $w$) which we are trying to optimize, $y$ is the label of an observation, and $a$ is the feature vector of that particular observation.  Now when we have $m$ samples, $ (y_{i}: a_{i}) $, where $a_{i} \in R^{n}$ and $y_i \in {(+1, -1)}$, our average loss can be obtained by summing up the individual losses for each sample and then dividing it my $m$. We will try to minimize this average loss. 
 
 
 $$
