@@ -8,7 +8,7 @@ description: In this post, we shall learn how to implement Gradient Descent to s
 header-includes:
 ---
 
-##There seems to be some issues with MathJax. Will try to fix them as soon as possible
+## There seems to be some issues with MathJax. Will try to fix them as soon as possible
 
 It has been very long and in this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it. The focus is going to be more on the implementation side and less on the mathy side. So, at times I might do things in a handwavy manner but I will provide links on where you can get more (and better) information. I presume you have some rudimentary knowledge about Supervised Learning, Optimization and Gradient Descent. I will still go through them quickly for the sake of completeness.
 
