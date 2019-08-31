@@ -8,13 +8,15 @@ description: In this post, we shall learn how to implement Gradient Descent to s
 header-includes:
 ---
 
+##There seems to be some issues with MathJax. Will try to fix them as soon as possible
+
 It has been very long and in this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it. The focus is going to be more on the implementation side and less on the mathy side. So, at times I might do things in a handwavy manner but I will provide links on where you can get more (and better) information. I presume you have some rudimentary knowledge about Supervised Learning, Optimization and Gradient Descent. I will still go through them quickly for the sake of completeness.
 
 **Supervised Learning:** In simplest terms, supervised learning involves trying to find a mapping function, which can predict the output based on the input. We find the function based on a set of labeled data (input: a vector of features-output: some sort of label). For simplicity's sake, we assume we are only looking at two  output labels. Essentially, we are trying to predict on of the output from the given set of input features. We learn the mapping function by looking at the already labelled data called "Training Data". Then once the function has been found, we can vouch for its credibility by using the function to predict the output from the input on data  which has been not used in training  and is called "Testing Data".   The [Supervised Learning Wikipedia](https://en.wikipedia.org/wiki/Supervised_learning) page is pretty good for more information.
 
 
 
-**Optimization:** In the most simplistic terms, optimization involves finding the best value of a function over a given domain. Let us define a few terms. The first is **Loss Function**. The Loss function $L(f(x), y)$  tells us how much we "lose" by predicting the output $f(x)$ instead of the true output $y​$.  A lot has been spoken about [Empirical Risk Minimization](https://en.wikipedia.org/wiki/Empirical_risk_minimization) is the literature and I won't spend any time here. We use the Logistic Loss function to minimize the empirical risk.  
+**Optimization:** In the most simplistic terms, optimization involves finding the best value of a function over a given domain. Let us define a few terms. The first is **Loss Function**. The Loss function $L(f(x), y)$  tells us how much we "lose" by predicting the output $f(x)$ instead of the true output $y$.  A lot has been spoken about [Empirical Risk Minimization](https://en.wikipedia.org/wiki/Empirical_risk_minimization) is the literature and I won't spend any time here. We use the Logistic Loss function to minimize the empirical risk.  
 
 Our data looks like this 
 
@@ -51,7 +53,7 @@ $$
 $$
 
 
-where $\mathcal{F}​$ is a convex set of feasible solutions.  When $\mathcal{F}​$ is $\mathbb{R}^n​$, then we have an unconstrained optimization problem. 
+where $\mathcal{F}$ is a convex set of feasible solutions.  When $\mathcal{F}$ is $\mathbb{R}^n$, then we have an unconstrained optimization problem. 
 
 **Step 0:** Given $x^{0}$ is the first feasible solution.
 
@@ -67,11 +69,11 @@ The above steps are taken and modified from the excellent and free "Nonlinear Op
 
 Let us try to use the above framework for **Gradient Descent**.
 
-**Step 0:** Let us choose $x^{0} = \mathbf{0}​$ (an all 0 vector)  as the first guess
+**Step 0:** Let us choose $x^{0} = \mathbf{0}$ (an all 0 vector)  as the first guess
 
 **Step 1:** For the directional derivative, $\delta f(x^{k}, s^{k})$ to be strictly less than 0, we can choose $s^{k} = -\nabla f(x^{k})$. For first iteration, it would be $ s^{0} = -\nabla f(x^{0})$ and    $\delta f(x^{k}, s^{k}) = \nabla f(x^{0})^{T}(-\nabla f(x^{0})) = -||\nabla f(x^{0})||^{2} < 0$ 
 
-**Step 2:** Now we know that if we go in the direction of negative gradient, we can reduce the value of the objective function. But how much should be advance? Too little, we might not get to the optimal solution fast enough. Too much, we might overplay our hands and miss the optimum. So, we need to find the best possible step length, which as you have guessed it sets up another optimization problem and it is called Line Search. Though this is just a 1-dimensional optimization problem, depending on the method we choose to optimize we might have to do a lot extra calculations like say objective function evaluations.  Can we get the convergence for free? The answer is **Yes**, but under some specific conditions -- namely the gradient of $P(x)$ is Lipschitz continuous. [Mark Schmidt](https://www.cs.ubc.ca/~schmidtm/Courses/540-W18/L4.pdf) at UBC explains it much better than I can do. And luckily, P(x)'s gradient is Lipschitz continuous. So what does this mean for the gradient descent? It means that we have a guarantee for convergence when the step size is constant $\alpha_{k} = \frac{1}{L}$ where $L$ is the Lipschitz's constant (largest Eigen value of the Hessian of $P'(x)$ for all values of $x​$  also, not very important for the implementation). Now, we are getting the exact amount to move for a guaranteed decrease in objective function value. 
+**Step 2:** Now we know that if we go in the direction of negative gradient, we can reduce the value of the objective function. But how much should be advance? Too little, we might not get to the optimal solution fast enough. Too much, we might overplay our hands and miss the optimum. So, we need to find the best possible step length, which as you have guessed it sets up another optimization problem and it is called Line Search. Though this is just a 1-dimensional optimization problem, depending on the method we choose to optimize we might have to do a lot extra calculations like say objective function evaluations.  Can we get the convergence for free? The answer is **Yes**, but under some specific conditions -- namely the gradient of $P(x)$ is Lipschitz continuous. [Mark Schmidt](https://www.cs.ubc.ca/~schmidtm/Courses/540-W18/L4.pdf) at UBC explains it much better than I can do. And luckily, P(x)'s gradient is Lipschitz continuous. So what does this mean for the gradient descent? It means that we have a guarantee for convergence when the step size is constant $\alpha_{k} = \frac{1}{L}$ where $L$ is the Lipschitz's constant (largest Eigen value of the Hessian of $P'(x)$ for all values of $x$  also, not very important for the implementation). Now, we are getting the exact amount to move for a guaranteed decrease in objective function value. 
 
 **Step 3**:      $$x^{k+1} \gets x^{k} -\alpha_{k}\nabla f(x^{k})$$ 
 
@@ -90,17 +92,17 @@ $$
 
 We will be using 0-based indexing for coding and 1-based indexing whenever we are discussing linear algebraic notation. 
 
-Let us traverse $A$ row by row and add it to the ​$values$ vector.
+Let us traverse $A$ row by row and add it to the $values$ vector.
 
-$$values = [2,1,1.2,1,2,1.3,3,2,4] ​$$
+$$values = [2,1,1.2,1,2,1.3,3,2,4] $$
 
-The corresponding column indexes of each of the above value in $values​$ vector is (we are using 0 based index )
+The corresponding column indexes of each of the above value in $values$ vector is (we are using 0 based index )
 
-$$col\_index = [0,2,3,1,3,2,4,0,3] ​$$
+$$col\_index = [0,2,3,1,3,2,4,0,3] $$
 
-The $row\_ptr$ vector has the locations in the ​$values$  vector where each column starts. Its size is ​$n+1$. The ​$row\_ptr$ starts with 0 and since the matrix ​$A$'s first row has three elements, the second element in ​$row\_ptr$ is 3. The next element in ​$row\_ptr$  will be  ​$ 3 + 2 = 5$.  
+The $row\_ptr$ vector has the locations in the $values$  vector where each column starts. Its size is $n+1$. The $row\_ptr$ starts with 0 and since the matrix $A$'s first row has three elements, the second element in $row\_ptr$ is 3. The next element in $row\_ptr$  will be  $ 3 + 2 = 5$.  
 
-$$row\_ptr = [0, 3, 5, 7, 9]​$$
+$$row\_ptr = [0, 3, 5, 7, 9]$$
 
 Let us iterate through a row: say, we choose the third row **(i = 3)**, then we can do the following:
 
@@ -272,7 +274,7 @@ $$
 G(x) = \log(1+e^{-y_{1}(a_{11}x_{1} + a_{12}x_{2} + ... + a_{1n}x_{n})})+ \log(1+e^{-y_{2}(a_{21}x_{1} + a_{22}x_{2} + ... + a_{2n}x_{n})}) + ... + \log(1+e^{-y_{m}(a_{m1}x_{1} + a_{m2}x_{2} + ... + a_{mn}x_{n})})
 $$
 
-To get the gradient, we have to take the partial derivative with respect to each and every coordinate of $x​$.
+To get the gradient, we have to take the partial derivative with respect to each and every coordinate of $x$.
 
 $$
 \frac{\partial G}{\partial x_{1}} = \frac{1}{1+e^{-y_{1}x^{T}a_{1}}}.e^{-y_{1}x^{T}a_{1}}.-y_{1}a_{11} + \frac{1}{1+e^{-y_{2}x^{T}a_{2}}}.e^{-y_{2}x^{T}a_{2}}.-y_{2}a_{21} + ... + \frac{1}{1+e^{-y_{m}x^{T}a_{m}}}.e^{-y_{m}x^{T}a_{m}}.-y_{m}a_{m1}
@@ -483,13 +485,13 @@ Let $f(x)$ be a convex, smooth and differentiable function. The following genera
 
 Given $f(x)$ and $ x_0$
 
-**Step 1:**  Find a descent direction (search direction) $s = -\nabla P(x)​$
+**Step 1:**  Find a descent direction (search direction) $s = -\nabla P(x)$
 
 ​		If no such direction exists, STOP!!!
 
-**Step 2:** Update $x := x + \frac{1}{L} s​$
+**Step 2:** Update $x := x + \frac{1}{L} s$
 
-**Step 3:** Check for stopping conditions; if they are met, then you can stop. if not continue steps 1-4;*
+**Step 3:** Check for stopping conditions; if they are met, then you can stop. if not continue steps 1-2
 
 The first init function just initializes the various values of the solver
 
