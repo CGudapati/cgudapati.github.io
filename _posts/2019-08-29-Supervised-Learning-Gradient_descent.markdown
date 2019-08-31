@@ -8,8 +8,6 @@ description: In this post, we shall learn how to implement Gradient Descent to s
 header-includes:
 ---
 
-## There seems to be some issues with MathJax. Will try to fix them as soon as possible
-
 It has been very long and in this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it. The focus is going to be more on the implementation side and less on the mathy side. So, at times I might do things in a handwavy manner but I will provide links on where you can get more (and better) information. I presume you have some rudimentary knowledge about Supervised Learning, Optimization and Gradient Descent. I will still go through them quickly for the sake of completeness.
 
 **Supervised Learning:** In simplest terms, supervised learning involves trying to find a mapping function, which can predict the output based on the input. We find the function based on a set of labeled data (input: a vector of features-output: some sort of label). For simplicity's sake, we assume we are only looking at two  output labels. Essentially, we are trying to predict on of the output from the given set of input features. We learn the mapping function by looking at the already labelled data called "Training Data". Then once the function has been found, we can vouch for its credibility by using the function to predict the output from the input on data  which has been not used in training  and is called "Testing Data".   The [Supervised Learning Wikipedia](https://en.wikipedia.org/wiki/Supervised_learning) page is pretty good for more information.
@@ -304,7 +302,7 @@ $$
 
 Now we need to add the vector $\lambda x$  to the $\partial G$ to get the final gradient ($\frac{d}{dx}\frac{\lambda}{2}\lvert\lvert x\rvert\rvert^2 = \lambda x$) 
 
-I tried to keep the above gradient calculation as error free as possible but I might have still made an error. The code works correctly anyway. 
+I tried to keep the above gradient calculation formula as error free as possible but I might have still made an error. The code works correctly anyway. 
 
 So we need to create the above vector. The below code snippet does exactly that. It is fairly well commented.
 
