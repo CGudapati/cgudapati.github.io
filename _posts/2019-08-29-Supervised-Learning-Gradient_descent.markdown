@@ -77,7 +77,7 @@ Let us try to use the above framework for **Gradient Descent**.
 
 **Step 3**:      $$x^{k+1} \gets x^{k} -\alpha_{k}\nabla f(x^{k})$$ 
 
-**Step 4:** The stopping condition could be $||\nabla f(x^{k})|| \le \epsilon$ 
+**Step 4:** The stopping condition could be $\lvert\lvert\nabla f(x^{k})\rvert\rvert \le \epsilon$ 
 
 Now, Let us get to the exciting world of coding!
 
@@ -302,7 +302,7 @@ $$
 $$
 
 
-Now we need to add the vector $\lambda x$  to the $\partial G$ to get the final gradient ($\frac{d}{dx}\frac{\lambda}{2}||x||^2 = \lambda x$) 
+Now we need to add the vector $\lambda x$  to the $\partial G$ to get the final gradient ($\frac{d}{dx}\frac{\lambda}{2}\lvert\lvert x\rvert\rvert^2 = \lambda x$) 
 
 I tried to keep the above gradient calculation as error free as possible but I might have still made an error. The code works correctly anyway. 
 
