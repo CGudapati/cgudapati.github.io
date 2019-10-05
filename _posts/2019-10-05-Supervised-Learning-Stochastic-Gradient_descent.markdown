@@ -257,8 +257,8 @@ I did put way too much effort into making the above code as self documenting as 
 
 The following plots show how good the SGD is. The dataset used is  enron.libsvm. The first plot shows the objective function value and the second ones shows the reduction in training errors as the iterations pass. 
 
-<img src="../assets/img/ObjValue.png" style="zoom:150%;" />
+<img src="https://www.cgudapati.com/assets/img/ObjValue.png" style="zoom:150%;" />
 
-<img src="../assets/img/TrainingError.png" style="zoom:150%;" />
+<img src="https://www.cgudapati.com/assets/img/TrainingError.png" style="zoom:150%;" />
 
 The next blogpost will have the Stochastic Gradient Descent (SGD) Implementation. I will try to compare this with SGD. You can find the full source at [github](https://github.com/CGudapati/BinaryClassification)
