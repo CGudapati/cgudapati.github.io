@@ -2,7 +2,7 @@
 layout: post
 title:  "Implementing Stochastic Gradient Descent in C++ for Supervised Learning on Data with Sparse Features"
 date: 2019-10-05
-categories: Machine Learning
+categories: Machine-Learning
 use_math: true
 description: In this post, we will implement Stochastic Gradient Descent  to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it. 
 header-includes:
