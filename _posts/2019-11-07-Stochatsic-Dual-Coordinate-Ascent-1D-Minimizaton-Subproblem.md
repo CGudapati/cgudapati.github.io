@@ -1,3 +1,4 @@
+---
 layout: post
 title:  "The one-dimensional minimization subproblem of Stochastic Dual Coordinate Ascent (SDCA) Algorithm"
 date: 2019-11-07
@@ -5,6 +6,8 @@ categories: Machine-Learning
 use_math: true
 description: In this post, we will discuss the one-dimensional minimization problem that is a crucial step in the SDCA algorithm.
 header-includes:
+---
+
 
 A few years ago, [Martin Takáč](http://mtakac.com/) asked his students (I was one of them) to implement **Stochastic Dual Coordinate Ascent** SDCA algorithm as part of his final project. After implementing SGD, I didn't have any time for SDCA. So I didn't finish it at that time. Now I feel like I should finish as it is a fascinating algorithm. I will be implementing the full SDCA algorithm in the next post but this post is just to derive the one-dimensional minimization  problem that arises in the SDCA algorithm.  Martin was kind enough to give us the 1D problem directly but we will derive and graph the 1D minimization problem. I will not be discussing the algorithm per se. It is a famous algorithm and the interested reader can get hold of the original paper by Shalev-Shwartz \& Zhang (2013). I will merely reproduce a modified version of the algorithm's pseudocode that Martin gives in his class (they are essentially the same)  
 
