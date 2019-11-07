@@ -9,7 +9,7 @@ header-includes:
 ---
 
 
-A few years ago, [Martin Takáč](http://mtakac.com/) asked his students (I was one of them) to implement **Stochastic Dual Coordinate Ascent** SDCA algorithm as part of his ISE 407 final project. After implementing SGD, I didn't have any time for SDCA. So I didn't finish it at that time.  I have a yearning to  finish it as it is a fascinating algorithm. I will be implementing the full SDCA algorithm in the next post but this post is just to derive the one-dimensional minimization  problem that arises in the SDCA algorithm.  Martin was kind enough to give us the 1D problem directly but we will derive and graph the 1D minimization problem. I will not be discussing the algorithm per se. It is a famous algorithm and the interested reader can get hold of the original paper by Shalev-Shwartz \& Zhang (2013). I will merely reproduce a modified version of the algorithm's pseudocode that Martin gives in his class (they are essentially the same)  
+A few years ago, [Martin Takáč](http://mtakac.com/) asked his students (I was one of them) to implement **Stochastic Dual Coordinate Ascent** SDCA algorithm as part of his ISE 407 final project. After implementing SGD, I didn't have any time for SDCA. So I didn't finish it at that time.  I have a yearning to  finish it as it is a fascinating algorithm. I will be implementing the full SDCA algorithm in the next post but this post is just to derive the one-dimensional minimization  problem that arises in the SDCA algorithm.  Martin was kind enough to give us the 1D problem directly but we will derive and graph the 1D minimization problem. I will not be discussing the algorithm per se. It is a famous algorithm and the interested reader can get hold of the original paper by Shalev-Shwartz and Zhang (2013). I will merely reproduce a modified version of the algorithm's pseudocode that Martin gives in his class (they are essentially the same)  
 
 Let us take a look at  the following steps of SDCA algorithm at an epoch $t$ (as usual we choose the first guess as an all zero vector). My usual caveats exist. The pseudocode is probably correct but I use a different notation than the usual machine learning notation and hence I might have made a few mistakes in some indices. My notation is like this: $m$ = number of observations and $n$ = number of features, $a$ = an observation, $y$ = label, $x$ = current value of the solution and I know that this is bad :(  
 
@@ -74,7 +74,7 @@ $$
 $$
 
 
-Though Shalev-Scwartz \& Zhang provide it as a maximization problem I prefer it to be a minimization problem like this:
+Though Shalev-Scwartz and Zhang provide it as a maximization problem I prefer it to be a minimization problem like this:
 
 
 $$
