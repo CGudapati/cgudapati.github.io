@@ -1,5 +1,3 @@
-
-
 layout: post
 title:  "The one-dimensional minimization subproblem of Stochastic Dual Coordinate Ascent (SDCA) Algorithm"
 date: 2019-11-07
