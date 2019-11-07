@@ -133,7 +133,7 @@ u = \frac{1}{y_{i}}\log(-\frac{y_{i}+b}{b})
 $$
 
 
-Substituting this value of $u$ in (9), we get (I am doing way too many steps of simplification for you as I had already done it in my workbook)
+Substituting this value of $u$ in $L_{i}^{*}(b)$, we get (I am doing way too many steps of simplification for you as I had already done it in my workbook)
 
 
 $$
