@@ -70,7 +70,7 @@ We would like to maximize the above problem to get the solution. The most import
 
 
 $$
-\max_{\delta_{i}}\  -L_{i}^{*}(-(\alpha_{i}+\delta_{i})) -\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda n}a_{i}\delta_{i}\Big\rvert\Big\rvert
+\max_{\delta_{i}}\  -L_{i}^{*}(-(\alpha_{i}+\delta_{i})) -\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda m}a_{i}\delta_{i}\Big\rvert\Big\rvert^{2}
 $$
 
 
@@ -78,7 +78,7 @@ Though Shalev-Scwartz and Zhang provide it as a maximization problem I prefer it
 
 
 $$
-\min_{\delta_{i}}\  L_{i}^{*}(-(\alpha_{i}+\delta_{i})) +\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda n}a_{i}\delta_{i}\Big\rvert\Big\rvert
+\min_{\delta_{i}}\  L_{i}^{*}(-(\alpha_{i}+\delta_{i})) +\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda m}a_{i}\delta_{i}\Big\rvert\Big\rvert^{2}
 $$
 
 
@@ -156,7 +156,7 @@ But this is just a part of the complete 1D minimization problem. The full proble
 
 
 $$
--\frac{b}{y_{i}}\log(-\frac{b}{y_{i}}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) +\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda n}a_{i}\delta_{i}\Big\rvert\Big\rvert
+-\frac{b}{y_{i}}\log(-\frac{b}{y_{i}}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) +\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda m}a_{i}\delta_{i}\Big\rvert\Big\rvert^{2}
 $$
 where $b = (-\alpha_{i}-\delta_{i})$
 
