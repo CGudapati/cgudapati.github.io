@@ -93,7 +93,7 @@ f^{*}(b) = \sup_{a}\  b.a - f(a)
 $$
 
 
-Interested reader can read more about convex conjugate on wikipedia but let us derive the value of $L_{i}^{*}(\alpha)$ or  $L_{i}^{*}(b)$ are just placeholders. Doesn't really matter which one we use for the derivation) .  We use the normal function variable as $u$ and conjugate function variable as $b$
+Interested reader can read more about convex conjugate on wikipedia but let us derive the value of $L_{i}^{*}(\alpha)$ or $L_{i}^{*}(b)$ or  $L_{i}^{*}(b)$ are just placeholders. Doesn't really matter which one we use for the derivation) .  We use the normal function variable as $u$ and conjugate function variable as $b$
 
 
 $$
