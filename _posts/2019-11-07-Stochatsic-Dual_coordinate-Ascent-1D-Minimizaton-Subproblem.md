@@ -5,12 +5,12 @@ title:  "The one-dimensional minimization subproblem of Stochastic Dual Coordina
 date: 2019-11-07
 categories: Machine-Learning
 use_math: true
-description: In this post, we will discuss the one-dimensional minimization problem that is a crucial step in the SDCA algroithm.
+description: In this post, we will discuss the one-dimensional minimization problem that is a crucial step in the SDCA algorithm.
 header-includes:
 
-A few years ago, [Martin Takáč](http://mtakac.com/) asked his students (I was one of them) to implement SDCA algorithm as part of his final project. After the implementation of SGD, I didn't have any time for SDCA. So I didn't finish it at that time. Now I feel like I should finish as it is a fascinating algorithm. I will be implementing the full SDCA algorithm in the next post but this post is just to derive the one-dimensional minimization  problem that arises in the SDCA algorithm.  Martin was kind enough to give us the 1D problem directly but we will derive and graph the 1D minimization problem. I will not be discussing the algorithm. It is a famous algorithm and the interested reader can get hold of the original paper by Shalev-Shwartz \& Zhang (2013). I will merely reproduce a modified version of the algorithm's pseudocode that Martin gives in his class (they are essentially the same)  
+A few years ago, [Martin Takáč](http://mtakac.com/) asked his students (I was one of them) to implement **Stochastic Dual Coordinate Ascent** SDCA algorithm as part of his final project. After implementing SGD, I didn't have any time for SDCA. So I didn't finish it at that time. Now I feel like I should finish as it is a fascinating algorithm. I will be implementing the full SDCA algorithm in the next post but this post is just to derive the one-dimensional minimization  problem that arises in the SDCA algorithm.  Martin was kind enough to give us the 1D problem directly but we will derive and graph the 1D minimization problem. I will not be discussing the algorithm per se. It is a famous algorithm and the interested reader can get hold of the original paper by Shalev-Shwartz \& Zhang (2013). I will merely reproduce a modified version of the algorithm's pseudocode that Martin gives in his class (they are essentially the same)  
 
-Let us take a look at  the following steps of **Stochastic Dual Coordinate Ascent** algorithm at an epoch $t$ (as usual we choose the first guess as an all zero vector). My usual caveats exist. The pseudocode is probably correct but I use a different notation than the usual machine learning notation and hence I might have made a few mistakes in some indices. My notation is like this: $m$ = number of observations and $n$ = number of features, $a$ = an observation, $y$ = label, $x$ = current value of the solution and I know that this is bad :(  
+Let us take a look at  the following steps of SDCA algorithm at an epoch $t$ (as usual we choose the first guess as an all zero vector). My usual caveats exist. The pseudocode is probably correct but I use a different notation than the usual machine learning notation and hence I might have made a few mistakes in some indices. My notation is like this: $m$ = number of observations and $n$ = number of features, $a$ = an observation, $y$ = label, $x$ = current value of the solution and I know that this is bad :(  
 
 **Step 0:** Input: $\alpha^{t}$
 
@@ -90,22 +90,24 @@ Solving for u, we get
 $$
 u = \frac{1}{y_{i}}\log(-\frac{y_{i}+b}{b})
 $$
-Substituting this value of $u$ in (9), we get (I am doing way too many steps of algebra for you as I had already done it in my workbook)
+Substituting this value of $u$ in (9), we get (I am doing way too many steps of simplification for you as I had already done it in my workbook)
 $$
-\begin{align}
+\begin{align*}
     L_{i}^{*}(b) &= \frac{b}{y_{i}}\log(-\frac{b+y_{i}}{b}) -\log(1+e^{-\log(-\frac{b+y_{i}}{b})}) \\\\
-    &\implies \frac{b}{y_{i}}\bigg[\log(b+y_{i})-\log(-b)\bigg]-\log(1-\frac{b}{b+y_{i}}) \\\\
-&\implies \frac{b}{y_{i}}\bigg[\log(b+y_{i})-\log(-b)\bigg]-\log(\frac{y_{i}}{b+y_{i}}) \\\\
-&\implies \frac{b}{y_{i}}\log(b+y_{i})-\frac{b}{y_{i}}\log(-b)-\log(y_{i})+\log(b+y_{i}) \\\\
-&\implies(1+\frac{b}{y_{i}})\log(b+y_{i})-\frac{b}{y_{i}}\log(-b)-\log(y_{i}) \\\\
-&\implies (1+\frac{b}{y_{i}})\bigg[\log(y_{i}(1+\frac{b}{y_{i}}))\bigg] -\frac{b}{y_{i}}\log(-b) -\log(y_{i}) \\\\
-&\implies (1+\frac{b}{y_{i}})\log(y_{i}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) -\frac{b}{y_{i}}\log(-b) -\log(y_{i}) \\\\
-&\implies \frac{b}{y_{i}}\log(y_{i}) -\frac{b}{y_{i}}\log(-b) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) \\\\
-&\implies -\frac{b}{y_{i}}\log(-\frac{b}{y_{i}}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) \\\\
-  \end{align})
+                 &\implies \frac{b}{y_{i}}\bigg[\log(b+y_{i})-\log(-b)\bigg]-\log(1-\frac{b}{b+y_{i}}) \\\\
+                 &\implies \frac{b}{y_{i}}\bigg[\log(b+y_{i})-\log(-b)\bigg]-\log(\frac{y_{i}}{b+y_{i}}) \\\\
+                 &\implies \frac{b}{y_{i}}\log(b+y_{i})-\frac{b}{y_{i}}\log(-b)-\log(y_{i})+\log(b+y_{i}) \\\\
+                 &\implies(1+\frac{b}{y_{i}})\log(b+y_{i})-\frac{b}{y_{i}}\log(-b)-\log(y_{i}) \\\\
+                 &\implies (1+\frac{b}{y_{i}})\bigg[\log(y_{i}(1+\frac{b}{y_{i}}))\bigg] -\frac{b}{y_{i}}\log(-b) -\log(y_{i}) \\\\
+                 &\implies (1+\frac{b}{y_{i}})\log(y_{i}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) -\frac{b}{y_{i}}\log(-b) -\log(y_{i}) \\\\
+                 &\implies \frac{b}{y_{i}}\log(y_{i}) -\frac{b}{y_{i}}\log(-b) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) \\\\
+                 &\implies -\frac{b}{y_{i}}\log(-\frac{b}{y_{i}}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}})
+  \end{align*}
 $$
 
-So we finally get this function. But this is just a part of the complete 1D minimization problem. The full problem looks like this:
+So we finally get the above conjugate function. 
+
+But this is just a part of the complete 1D minimization problem. The full problem looks like this:
 $$
 -\frac{b}{y_{i}}\log(-\frac{b}{y_{i}}) + (1+\frac{b}{y_{i}})\log(1+\frac{b}{y_{i}}) +\frac{\lambda m}{2}\Big\lvert\Big\lvert x + \frac{1}{\lambda n}a_{i}\delta_{i}\Big\rvert\Big\rvert
 $$
