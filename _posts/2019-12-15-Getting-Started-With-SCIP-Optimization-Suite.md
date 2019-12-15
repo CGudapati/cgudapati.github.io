@@ -346,4 +346,4 @@ And now we will create a solution object to take a look at the solution:
 }
 ```
 
-There is also a `SCIP_CALL` to write the formulated problem into a `.lp` file in line 4 to  verify the contents of the model.  We can also look at the solution from the `SCIPgetBestSol` command. Please email me if you think things can be done better or if they are not very clear.  The full source code is available on my GitHub repository
+There is also a `SCIP_CALL` to write the formulated problem into a `.lp` file in line 4 to  verify the contents of the model.  We can also look at the solution from the `SCIPgetBestSol` command. Please email me if you think things can be done better or if they are not very clear.  The full source code is available on my [GitHub repo](https://github.com/CGudapati/SCIP_CPP_examples).
