@@ -9,6 +9,8 @@ header-includes:
 ---
 
 I had been working with SCIP for the past week and just wished I had this document when I started. It would have saved me a few hours of needless googling. He, we will see how to solve the following continuous optimization problem:
+
+
 $$
 \begin{alignat*}{2}
 &\!\min        &\qquad3& x_{1} + 2x_{2}\\
@@ -18,6 +20,8 @@ $$
 &                  &      & x_1, x_{2} &\geq 0.\label{eq:constraint4}
 \end{alignat*}
 $$
+
+
 The above example has been directly taken from [Model Building in Mathematical Programming by H. Paul Williams](https://www.wiley.com/en-us/Model+Building+in+Mathematical+Programming%2C+5th+Edition-p-9781118443330). Before diving into the actual formulation, let us look at a brief installation guide. 
 
 ### Installing SCIP 6.0.2 on macOS Catalina with SOPLEX and GuRoBi as LP solvers
