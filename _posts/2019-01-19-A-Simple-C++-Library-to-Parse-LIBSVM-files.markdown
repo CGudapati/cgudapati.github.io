@@ -2,7 +2,7 @@
 layout: post
 title:  "ParseSVM: A Simple C++ Library to read LIBSVM files"
 date: 2019-01-19
-categories: SparseMatrices, SVM, LIBSVM, Machine-Learning
+categories: SparseMatrices SVM Machine-Learning
 use_math: true
 description: In this post, we will take a look at a simple C++ library to read SVM files and store them in either compressed row storage or compressed column storage matrices. 
 ---

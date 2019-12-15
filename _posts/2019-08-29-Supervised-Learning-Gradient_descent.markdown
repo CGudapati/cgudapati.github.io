@@ -2,7 +2,7 @@
 layout: post
 title:  "Implementing Gradient Descent in C++ for Supervised Learning on Data with Sparse Features"
 date: 2019-08-29
-categories: SparseMatrices
+categories: Machine-Learning
 use_math: true
 description: In this post, we shall learn how to implement Gradient Descent to solve a supervised (binary classification) learning problem. The features are sparse and we will use C++ to implement it.
 header-includes:
