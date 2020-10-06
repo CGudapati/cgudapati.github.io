@@ -10,7 +10,7 @@ header-includes:
 
 I assume the reader already has familiarity with the Sudoku puzzle. If not, go here: [Sudoku Wikipedia](https://en.wikipedia.org/wiki/Sudoku). I also assume you have SCIP optimization suite installed and if not, see the instructions here: [Getting Started with SCIP optimization in C++: A toy example](https://www.cgudapati.com/integer-programming/2019/12/15/Getting-Started-With-SCIP-Optimization-Suite.html)
 
-Let us start with the directory structure. We create an empty directory named `sudoku_scip\`. Inside we create another empty directory named `src\`. Inside `sudoku` directory, we also have a `Makefile` and a `data` diectory with list of puzzles. 
+Let us start with the directory structure. We create an empty directory named `sudoku_scip\`. Inside we create another empty directory named `src\`. Inside `sudoku` directory, we also have a `Makefile` and a `data` directory with list of puzzles. 
 
 ```bash
 $ ls sudoku
@@ -122,7 +122,7 @@ namespace sudoku
 
 
 
-The `sudoku_utils.h` file is commented well enough so that the reader can understand it fairly easily. The `get_sudoku_grid()` function is used to read the sudoku puzzle from a file which has a single line with 81 characters. the numbers 1,2...9 are represented as is in the file and the blanks can either be a '.' or a '0' chacater. 
+The `sudoku_utils.h` file is commented well enough so that the reader can understand it fairly easily. The `get_sudoku_grid()` function is used to read the sudoku puzzle from a file which has a single line with 81 characters. the numbers 1,2...9 are represented as is in the file and the blanks can either be a '.' or a '0' character. 
 
 The next function just displays the Sudoku grid. This function is called when we first read the puzzle and then when we solve the puzzle
 
@@ -159,7 +159,7 @@ The next function just displays the Sudoku grid. This function is called when we
 
  Lines 1-5 just tell us how to call SCIP accurately. Line 9 loads the sudoku puzzle read from the disk into the `puzzle` variable.  Line 11-12 print the unsolved puzzle. 
 
-Line 14 - 25 shows us how to set the scip environment.  Line 26  lets us set the objsense but since sudoku is a feasibillty problem, it doesn't matter that much
+Line 14 - 25 shows us how to set the scip environment.  Line 26  lets us set the obj-sense but since sudoku is a feasibility problem, it doesn't matter that much
 
 Let us take a look at the integer programming model for Sudoku
 $$
@@ -171,9 +171,9 @@ $$
 & &   & x_{ijk}&= 1\quad \text{for}\quad (i,j,k) \in \text{known cells}  \label{eq:constraint5}
 \end{alignat}
 $$
-The standard Sudoku grid has 9x9 = 81 squares. Some of them will already be filled with numbers given in the puzzle and we should fill the blanks. So, each square in the grid can take 9 numbers. Let $x_{ijk}$  represent all the binary decision varibales. if $ x_{ijk} = 1 $, then the number k is present in ith row and jth column i.e if $x_{1,4,7} = 1$, then the number 7 is present in 1st row and 4th column.
+The standard Sudoku grid has 9x9 = 81 squares. Some of them will already be filled with numbers given in the puzzle and we should fill the blanks. So, each square in the grid can take 9 numbers. Let $x_{ijk}$  represent all the binary decision variables. if $ x_{ijk} = 1 $, then the number k is present in ith row and jth column i.e if $x_{1,4,7} = 1$, then the number 7 is present in 1st row and 4th column.
 
- We will cereate the binary sudoku variables in the next code section
+ We will create the binary sudoku variables in the next code section
 
 ```c++
      1	std::vector<std::vector<std::vector<SCIP_VAR *>>> x_vars(9, std::vector<std::vector<SCIP_VAR *>>(9, std::vector<SCIP_VAR *>(9)));
@@ -206,7 +206,7 @@ The standard Sudoku grid has 9x9 = 81 squares. Some of them will already be fill
 
 We are using three for loops to create the variables. Since these variables are not going to be modified in anyway, we can use the simple  `SCIPcreateVarBasic` command. 
 
-After creating the variables, let us create the constraits. Our first constraint ensures that in each column, the numbers 1, 2, ..., 9 do not repeat
+After creating the variables, let us create the constraints. Our first constraint ensures that in each column, the numbers 1, 2, ..., 9 do not repeat
 
 ```c++
 
@@ -239,7 +239,7 @@ After creating the variables, let us create the constraits. Our first constraint
     }
 ```
 
-After that we will add another constraint that will esnure that in each row, the numbers 1, 2, ..., 9 do not repeat
+After that we will add another constraint that will ensure that in each row, the numbers 1, 2, ..., 9 do not repeat
 
 ```c++
 std::vector<SCIP_CONS *> row_constrs;  //These constraints will model that fact that in each row, the numbers 1..9 do not repeat. 
@@ -273,7 +273,7 @@ std::vector<SCIP_CONS *> row_constrs;  //These constraints will model that fact 
 
 
 
-Now in a traditional sudoku puzzle, each subgrid should contain the numbers 1, 2, ..., 9 without repeating. We have the folloiwng constraints
+Now in a traditional sudoku puzzle, each sub-grid should contain the numbers 1, 2, ..., 9 without repeating. We have the following constraints
 
 ```c++
 //Subgrid constraints
@@ -310,11 +310,11 @@ for (int k = 0; k < 9; ++k)
     }
 }
 ```
-If it is confusing, try to write a constaint by hand for the values  p = 0, q = 0 and k =1...9 and see how it looks. We are just writing the constraints from the math notation to code. 
+If it is confusing, try to write a constraint by hand for the values  p = 0, q = 0 and k =1...9 and see how it looks. We are just writing the constraints from the math notation to code. 
 
 The next set of constraints ensure that we should fill every position in the 9x9 grid with one number.
 
-And finally we have to assign the numbers that are already given in the initail puzzle to the corresponding variables. We can do this using the `SCIfixVar()` function. The `infeasible` and `fixed` variables can be used for debugging.
+And finally we have to assign the numbers that are already given in the initial puzzle to the corresponding variables. We can do this using the `SCIPfixVar()` function. The `infeasible` and `fixed` variables can be used for debugging.
 
 
 
@@ -336,7 +336,7 @@ And finally we have to assign the numbers that are already given in the initail 
 
 ```
 
-And now we solve the problem by specifiying an objective sense. This is just to demonstrate how to set oibjective sense (minimize of maximize). Since this is a feasibility problem, it doesn't matter whetrer the obj. sense is minimization or maximization. We also show how to turn off the logging by setting an int paramter. And finally, we solve the problem using the `SCIPsolve()` function and store the solution status afterwards. 
+And now we solve the problem by specifying an objective sense. This is just to demonstrate how to set objective sense (minimize of maximize). Since this is a feasibility problem, it doesn't matter whether the obj. sense is minimization or maximization. We also show how to turn off the logging by setting an int parameter. And finally, we solve the problem using the `SCIPsolve()` function and store the solution status afterwards. 
 
     SCIP_CALL(SCIPsetObjsense(scip, SCIP_OBJSENSE_MAXIMIZE));
     
@@ -423,13 +423,13 @@ And finally, we print the solution grid and free the variables.
 
 ```
 
-It is always uselfull to see the LP to glean more information about how the model is being constructed. To write the model to an LP we can use the following code
+It is always useful to see the LP to glean more information about how the model is being constructed. To write the model to an LP we can use the following code
 
 ```c++
 SCIP_CALL((SCIPwriteOrigProblem(scip, "scip_sudoku.lp", nullptr, FALSE)));
 ```
 
-And to run this program on a unix-based system follow the folloings commands
+And to run this program on a unix-based system follow the following commands
 
 ```bash
 Sudoku$ ls
