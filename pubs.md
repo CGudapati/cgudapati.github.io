@@ -15,7 +15,7 @@ Please find the following list of publications and working papers pertaining to 
 
 
 * Naga V. C. Gudapati, Enrico Malaguti, Michele Monaci. *Network Design with Service Requirements: Scaling-up the Size of
-Solvable Problems* .  [arXiv preprint [PDF]](hhttps://arxiv.org/pdf/2107.01101.pdf)
+Solvable Problems* .  [arXiv preprint [PDF]](https://arxiv.org/pdf/2107.01101.pdf)
 
 
 
